@@ -6,7 +6,7 @@
 #    By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 15:12:48 by vpoka             #+#    #+#              #
-#    Updated: 2025/09/10 19:49:33 by vpoka            ###   ########.fr        #
+#    Updated: 2025/09/10 20:26:00 by vpoka            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,15 @@ NAME = megaphone
 #-----COMPILATION-----#
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MD -MP
 
 #-----FILES-----#
 
-SRCS =	megaphone.cpp
+SRC = src
+SRCS =	$(addprefix $(SRC)/, megaphone.cpp)
 
-OBJ_FOLDER = objs
-OBJS = $(SRCS:%.cpp=$(OBJ_FOLDER)/%.o)
+BUILD = build
+OBJS = $(SRCS:$(SRC)/%.cpp=$(BUILD)/%.o)
 
 #-----COLORS-----#
 
@@ -39,16 +40,16 @@ CYAN = \033[1;36m
 
 all: $(NAME)
 
-$(OBJ_FOLDER):
+$(BUILD):
 	@ echo "$(YELLOW)$(NAME): Compiling...$(RST)"
-	@ mkdir -p $(OBJ_FOLDER)
+	@ mkdir -p $(BUILD)
 
-$(NAME): $(OBJ_FOLDER) $(OBJS)
+$(NAME): $(BUILD) $(OBJS)
 	@ $(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	@ echo "$(GREEN)$(NAME) built successfully!$(RST)"
 
 clean:
-	@ rm -rf $(OBJ_FOLDER)
+	@ rm -rf $(BUILD)
 	@ echo "$(RED)$(NAME): deleted OBJECT files$(RST)"
 
 fclean: clean
@@ -57,7 +58,7 @@ fclean: clean
 
 re: fclean all
 
-$(OBJ_FOLDER)/%.o: %.cpp
+$(BUILD)/%.o: $(SRC)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 .PHONY: clean fclean re
