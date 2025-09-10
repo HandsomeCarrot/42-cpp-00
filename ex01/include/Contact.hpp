@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:31:49 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 01:14:24 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 01:38:09 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ class Contact
 		Contact(void);
 		~Contact(void);
 
-		void		setFirstName(std::string s);
-		std::string	getFirstName(void);
+		void		setFirstName(const std::string &s);
+		std::string	getFirstName(void) const;
 
-		void		setLastName(std::string s);
-		std::string	getLastName(void);
+		void		setLastName(const std::string &s);
+		std::string	getLastName(void) const;
 
-		void		setNickname(std::string s);
-		std::string	getNickname(void);
+		void		setNickname(const std::string &s);
+		std::string	getNickname(void) const;
 
-		void		setSecret(std::string s);
-		std::string	getSecret(void);
+		void		setSecret(const std::string &s);
+		std::string	getSecret(void) const;
 
-		void		setPhoneNumber(std::string s);
-		std::string	getPhoneNumber(void);
+		void		setPhoneNumber(const std::string &s);
+		std::string	getPhoneNumber(void) const;
 
 
 	private:

@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:27:22 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 01:16:46 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 01:38:30 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ PhoneBook::~PhoneBook(void)
  * 
  * @return The number of contacts as an unsigned integer.
  */
-unsigned int	PhoneBook::getContactsCount(void)
+unsigned int	PhoneBook::getContactsCount(void) const
 {
 	return (contactsCount);
 }
@@ -65,11 +65,11 @@ unsigned int	PhoneBook::getContactsCount(void)
  */
 void	PhoneBook::addContact
 (
-	std::string	new_firstName,
-	std::string	new_lastName,
-	std::string	new_nickname,
-	std::string	new_secret,
-	std::string	new_phoneNumber
+	const std::string	&new_firstName,
+	const std::string	&new_lastName,
+	const std::string	&new_nickname,
+	const std::string	&new_secret,
+	const std::string	&new_phoneNumber
 )
 {
 	contacts[newContactIndex].setFirstName(new_firstName);
@@ -96,7 +96,7 @@ void	PhoneBook::addContact
  * @param s The input string to be truncated.
  * @return A new string that is either the original (if <= 10 chars) or truncated to 10 chars with a '.'.
  */
-std::string	PhoneBook::truncateString(std::string s)
+std::string	PhoneBook::truncateString(const std::string &s)
 {
 	if (s.length() <= 10)
 		return (s);

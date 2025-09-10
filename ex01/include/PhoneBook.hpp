@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:26:28 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 01:18:54 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 01:38:26 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ class PhoneBook
 		PhoneBook(void);
 		~PhoneBook(void);
 
-		unsigned int	getContactsCount(void);
+		unsigned int	getContactsCount(void) const;
 
 		void	addContact
 		(
-			std::string	new_firstName,
-			std::string	newLastName,
-			std::string	newNickname,
-			std::string	newSecret,
-			std::string	newPhoneNumber
+			const std::string	&new_firstName,
+			const std::string	&newLastName,
+			const std::string	&newNickname,
+			const std::string	&newSecret,
+			const std::string	&newPhoneNumber
 		);
 		
 		void	displayContactList(void);
@@ -44,7 +44,7 @@ class PhoneBook
 		unsigned int	contactsCount;
 		unsigned int	newContactIndex;
 
-		std::string		truncateString(std::string s);
+		std::string		truncateString(const std::string &s);
 		void			displaySingleInfo(std::string info_type, std::string info);
 		void			displaySeparatorLine(unsigned int separations);
 
