@@ -6,7 +6,7 @@
 #    By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 15:12:48 by vpoka             #+#    #+#              #
-#    Updated: 2025/09/10 18:33:32 by vpoka            ###   ########.fr        #
+#    Updated: 2025/09/10 19:49:33 by vpoka            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ CYAN = \033[1;36m
 all: $(NAME)
 
 $(OBJ_FOLDER):
-	@ echo "$(YELLOW)$(NAME): Compiling ...$(RST)"
+	@ echo "$(YELLOW)$(NAME): Compiling...$(RST)"
 	@ mkdir -p $(OBJ_FOLDER)
 
 $(NAME): $(OBJ_FOLDER) $(OBJS)
