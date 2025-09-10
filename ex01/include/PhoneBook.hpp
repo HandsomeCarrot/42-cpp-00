@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:26:28 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 01:16:46 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 01:18:54 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ class PhoneBook
 		 *       Each field is left-aligned and padded to 10 characters.
 		 */
 		template	<typename T>
-		void		PhoneBook::displayMultiInfo(T index, std::string firstName, std::string lastName, std::string nickname)
+		void		displayMultiInfo(T index, std::string firstName, std::string lastName, std::string nickname)
 		{
 			std::cout.setf (std::ios::right);
 			std::cout << "|" << std::setfill(' ') << std::setw(10) << index;
