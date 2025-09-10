@@ -6,23 +6,23 @@
 #    By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 20:40:46 by vpoka             #+#    #+#              #
-#    Updated: 2025/09/10 19:49:22 by vpoka            ###   ########.fr        #
+#    Updated: 2025/09/10 20:12:16 by vpoka            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = phonebook
 
 CXX = c++
-CXXFLAGS = -Werror -Wextra -Wall -std=c++98
+CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -MD -MP
 
-INCLUDE = -IContact.hpp -IPhoneBook.hpp
+INCLUDE = -Iinclude
 
 SRCS =	Contact.cpp \
 		PhoneBook.cpp \
 		main.cpp
 
-OBJ_FOLDER = objs
-OBJS = $(SRCS:%.cpp=$(OBJ_FOLDER)/%.o)
+COMPILATION = compilation
+OBJS = $(SRCS:%.cpp=$(COMPILATION)/%.o)
 
 #-----COLORS-----#
 
@@ -37,16 +37,16 @@ CYAN = \033[1;36m
 
 all: $(NAME)
 
-$(OBJ_FOLDER):
+$(COMPILATION):
 	@ echo "$(YELLOW)$(NAME): Compiling...$(RST)"
-	@ mkdir -p $(OBJ_FOLDER)
+	@ mkdir -p $(COMPILATION)
 
-$(NAME): $(OBJ_FOLDER) $(OBJS)
+$(NAME): $(COMPILATION) $(OBJS)
 	@ $(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	@ echo "$(GREEN)$(NAME) built successfully!$(RST)"
 
 clean:
-	@ rm -rf $(OBJ_FOLDER)
+	@ rm -rf $(COMPILATION)
 	@ echo "$(RED)$(NAME): deleted OBJECT files$(RST)"
 
 fclean: clean
@@ -55,10 +55,10 @@ fclean: clean
 
 re: fclean all
 
-$(OBJ_FOLDER)/%.o: %.cpp
+$(COMPILATION)/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-run: re
+run: all
 	@ echo "$(CYAN)Starting $(NAME)...$(RST)"
 	@ ./phonebook
 
