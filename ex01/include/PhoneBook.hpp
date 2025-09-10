@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:26:28 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/10 23:55:35 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 00:51:53 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,16 @@ class PhoneBook
 
 		PhoneBook(void);
 		~PhoneBook(void);
+		
+		unsigned int	contacts_count;
 
 		void	add_contact
 		(
-			std::string		new_firstName,
-			std::string		new_lastName,
-			std::string		new_nickname,
-			std::string		new_secret,
-			unsigned int	new_phoneNumber
+			std::string	new_firstName,
+			std::string	new_lastName,
+			std::string	new_nickname,
+			std::string	new_secret,
+			std::string	new_phoneNumber
 		);
 
 		void	display_contact_list(void);
@@ -39,12 +41,10 @@ class PhoneBook
 	private:
 
 		Contact	contacts[8];
-		unsigned int	contacts_count;
 		unsigned int	new_contact_index;
 
 		std::string		truncate_string(std::string s);
-		template		<typename T>
-		void			display_single_info(std::string info_type, T info);
+		void			display_single_info(std::string info_type, std::string info);
 		void			display_separator_line(unsigned int separations);
 		template		<typename T>
 		void			display_multi_info

@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 17:57:45 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/10 23:56:45 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 00:53:27 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,26 @@ static void	add(PhoneBook *pb)
 		get_str_input("Last name"),
 		get_str_input("Nickname"),
 		get_str_input("Darkest secret"),
-		get_int_input("Phone number")
+		get_str_input("Phone number")
 	);
 }
 
 static void	search(PhoneBook *pb)
 {
-	(void)pb;
+	unsigned int	index;
+
+	pb->display_contact_list();
+	if (pb->contacts_count == 0)
+		return;
+	while (true)
+	{
+		index = get_int_input("Enter index to display contact");
+		if (index < pb->contacts_count)
+			break;
+		std::cout << "Invalid index. Choose a index between 0 and " << pb->contacts_count - 1;
+		std::cout << std::endl;
+	}
+	pb->display_contact(index);
 }
 
 int	main(void)
@@ -71,7 +84,7 @@ int	main(void)
 	while (true)
 	{
 		std::cout << "PhoneBook>> ";
-		std::cin >> command;
+		getline(std::cin, command);
 		if (command == "ADD")
 			add(&pb);
 		else if (command == "SEARCH")

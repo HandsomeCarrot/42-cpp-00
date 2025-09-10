@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:27:22 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/10 23:54:19 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 00:51:16 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ PhoneBook::~PhoneBook(void)
  * @param new_firstName The first name of the new contact.
  * @param new_lastName The last name of the new contact.
  * @param new_nickname The nickname of the new contact.
- * @param new_secret A secret field for the new contact (e.g., a hidden note).
- * @param new_phoneNumber The phone number of the new contact as an unsigned integer.
+ * @param new_secret The darkest secret of the new contact.
+ * @param new_phoneNumber The phone number of the new contact.
  */
 void	PhoneBook::add_contact
 (
-	std::string		new_firstName,
-	std::string		new_lastName,
-	std::string		new_nickname,
-	std::string		new_secret,
-	unsigned int	new_phoneNumber
+	std::string	new_firstName,
+	std::string	new_lastName,
+	std::string	new_nickname,
+	std::string	new_secret,
+	std::string	new_phoneNumber
 )
 {
 	contacts[new_contact_index].set_firstName(new_firstName);
@@ -91,7 +91,6 @@ std::string	PhoneBook::truncate_string(std::string s)
 	return (s.substr(0, 9) + '.');
 }
 
-template	<typename T>
 /**
  * @brief Displays a single piece of information with its type label, formatted to a width of 14 characters.
  * 
@@ -102,9 +101,10 @@ template	<typename T>
  * @param info_type A string representing the type or label of the information (e.g., "First Name").
  * @param info The actual information value to be displayed.
  */
-void		PhoneBook::display_single_info(std::string info_type, T info)
+void		PhoneBook::display_single_info(std::string info_type, std::string info)
 {
-	std::cout << std::setw(14) << info_type << ": " << info << std::endl;
+	std::cout.setf (std::ios::left);
+	std::cout << std::setfill(' ') << std::setw(14) << info_type << ": " << info << std::endl;
 }
 
 /**
@@ -124,9 +124,9 @@ void	PhoneBook::display_separator_line(unsigned int separations)
 
 	std::cout << "|";
 	i = 0;
-	while (i <= separations)
+	while (i < separations)
 	{
-		std::cout << std::setfill('-') << std::setw(10) << "|";
+		std::cout << std::setfill('-') << std::setw(11) << "|";
 		i++;
 	}
 	std::cout << std::endl;
@@ -149,15 +149,10 @@ template	<typename T>
  * @note The output is sent to std::cout and includes a newline at the end.
  *       Each field is left-aligned and padded to 10 characters.
  */
-void		PhoneBook::display_multi_info
-(
-	T index,
-	std::string firstName,
-	std::string lastName,
-	std::string nickname
-)
+void		PhoneBook::display_multi_info(T index, std::string firstName, std::string lastName, std::string nickname)
 {
-	std::cout << "|" << std::setw(10) << index;
+	std::cout.setf (std::ios::right);
+	std::cout << "|" << std::setfill(' ') << std::setw(10) << index;
 	std::cout << "|" << std::setw(10) << firstName;
 	std::cout << "|" << std::setw(10) << lastName;
 	std::cout << "|" << std::setw(10) << nickname;
@@ -179,6 +174,12 @@ void	PhoneBook::display_contact_list(void)
 {
 	unsigned int	i;
 
+	std::cout << std::endl;
+	if (contacts_count == 0)
+	{
+		std::cout << "ERROR: no contacts saved" << std::endl;
+		return;
+	}
 	display_separator_line(4);
 	display_multi_info<std::string>("INDEX", "FIRST NAME", "LAST NAME", "NICKNAME");
 	display_separator_line(4);
@@ -195,6 +196,7 @@ void	PhoneBook::display_contact_list(void)
 		display_separator_line(4);
 		i++;
 	}
+	std::cout << std::endl;
 }
 
 /**
@@ -210,14 +212,16 @@ void	PhoneBook::display_contact_list(void)
  */
 void	PhoneBook::display_contact(unsigned int contact_index)
 {
+	std::cout << std::endl;
 	if (contact_index >= contacts_count)
 	{
 		std::cout << "invalid index" << std::endl;
 		return;
 	}
-	display_single_info<std::string>("first name", contacts[contact_index].get_firstName());
-	display_single_info<std::string>("last name", contacts[contact_index].get_lastName());
-	display_single_info<std::string>("nickname", contacts[contact_index].get_nickname());
-	display_single_info<int>("phone number", contacts[contact_index].get_phoneNumber());
-	display_single_info<std::string>("darkest secret", contacts[contact_index].get_secret());
+	display_single_info("first name", contacts[contact_index].get_firstName());
+	display_single_info("last name", contacts[contact_index].get_lastName());
+	display_single_info("nickname", contacts[contact_index].get_nickname());
+	display_single_info("phone number", contacts[contact_index].get_phoneNumber());
+	display_single_info("darkest secret", contacts[contact_index].get_secret());
+	std::cout << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:46:20 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/10 23:48:57 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 00:47:44 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Contact::Contact(void) :
 	lastName(""),
 	nickname(""),
 	secret(""),
-	phoneNumber(0)
+	phoneNumber("")
 {
 	std::cout << "created an empty contact." << std::endl;
 }
@@ -128,15 +128,15 @@ std::string	Contact::get_secret(void)
  * 
  * @param i The integer representing the phone number to set.
  */
-void	Contact::set_phoneNumber(unsigned int i)
+void	Contact::set_phoneNumber(std::string s)
 {
-	phoneNumber = i;
+	phoneNumber = s;
 }
 
 /**
  * @brief returns the phone number of the contact.
  */
-unsigned int	Contact::get_phoneNumber(void)
+std::string	Contact::get_phoneNumber(void)
 {
 	return (phoneNumber);
 }
