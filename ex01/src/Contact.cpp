@@ -6,12 +6,11 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:46:20 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/10 20:10:53 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/10 20:32:53 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/Contact.hpp"
-
+#include "Contact.hpp"
 
 /**
  * @brief Default constructor for the Contact class.
