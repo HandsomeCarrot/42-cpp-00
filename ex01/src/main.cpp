@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 17:57:45 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/10 23:39:56 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/10 23:56:45 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static unsigned int	get_int_input(std::string prompt)
 	return (input);
 }
 
-static void	add_contact(PhoneBook *pb)
+static void	add(PhoneBook *pb)
 {
 	std::cout << "Adding new contact to the phone book." << std::endl;
 	pb->add_contact
@@ -58,7 +58,7 @@ static void	add_contact(PhoneBook *pb)
 	);
 }
 
-static void	search_contact(PhoneBook *pb)
+static void	search(PhoneBook *pb)
 {
 	(void)pb;
 }
@@ -73,9 +73,9 @@ int	main(void)
 		std::cout << "PhoneBook>> ";
 		std::cin >> command;
 		if (command == "ADD")
-			add_contact(&pb);
+			add(&pb);
 		else if (command == "SEARCH")
-			search_contact(&pb);
+			search(&pb);
 		else if (command == "EXIT")
 			break;
 		else
