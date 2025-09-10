@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:27:22 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 00:51:16 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 01:16:46 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
  * Outputs a message indicating that an empty phone book has been created.
  */
 PhoneBook::PhoneBook(void) :
-	contacts_count(0),
-	new_contact_index(0)
+	contactsCount(0),
+	newContactIndex(0)
 {
 	std::cout << "empty phone book created" << std::endl;
 }
@@ -38,12 +38,24 @@ PhoneBook::~PhoneBook(void)
 }
 
 /**
+ * @brief Retrieves the current number of contacts stored in the phone book.
+ * 
+ * This method returns the total count of contacts that have been added to the PhoneBook instance.
+ * 
+ * @return The number of contacts as an unsigned integer.
+ */
+unsigned int	PhoneBook::getContactsCount(void)
+{
+	return (contactsCount);
+}
+
+/**
  * @brief Adds a new contact to the phone book.
  *
  * This method creates a new contact entry using the provided details and stores it
- * in the contacts array at the current new_contact_index. If the index reaches 7,
+ * in the contacts array at the current newContactIndex. If the index reaches 7,
  * it wraps around to 0, effectively overwriting the oldest contact when the phone
- * book is full (maximum 8 contacts). The contacts_count is incremented up to 8.
+ * book is full (maximum 8 contacts). The contactsCount is incremented up to 8.
  *
  * @param new_firstName The first name of the new contact.
  * @param new_lastName The last name of the new contact.
@@ -51,7 +63,7 @@ PhoneBook::~PhoneBook(void)
  * @param new_secret The darkest secret of the new contact.
  * @param new_phoneNumber The phone number of the new contact.
  */
-void	PhoneBook::add_contact
+void	PhoneBook::addContact
 (
 	std::string	new_firstName,
 	std::string	new_lastName,
@@ -60,18 +72,18 @@ void	PhoneBook::add_contact
 	std::string	new_phoneNumber
 )
 {
-	contacts[new_contact_index].set_firstName(new_firstName);
-	contacts[new_contact_index].set_lastName(new_lastName);
-	contacts[new_contact_index].set_nickname(new_nickname);
-	contacts[new_contact_index].set_secret(new_secret);
-	contacts[new_contact_index].set_phoneNumber(new_phoneNumber);
+	contacts[newContactIndex].setFirstName(new_firstName);
+	contacts[newContactIndex].setLastName(new_lastName);
+	contacts[newContactIndex].setNickname(new_nickname);
+	contacts[newContactIndex].setSecret(new_secret);
+	contacts[newContactIndex].setPhoneNumber(new_phoneNumber);
 	
-	if (new_contact_index == 7)
-		new_contact_index = 0;
+	if (newContactIndex == 7)
+		newContactIndex = 0;
 	else
-		new_contact_index++;
-	if (contacts_count < 8)
-		contacts_count++;
+		newContactIndex++;
+	if (contactsCount < 8)
+		contactsCount++;
 }
 
 /**
@@ -84,7 +96,7 @@ void	PhoneBook::add_contact
  * @param s The input string to be truncated.
  * @return A new string that is either the original (if <= 10 chars) or truncated to 10 chars with a '.'.
  */
-std::string	PhoneBook::truncate_string(std::string s)
+std::string	PhoneBook::truncateString(std::string s)
 {
 	if (s.length() <= 10)
 		return (s);
@@ -101,7 +113,7 @@ std::string	PhoneBook::truncate_string(std::string s)
  * @param info_type A string representing the type or label of the information (e.g., "First Name").
  * @param info The actual information value to be displayed.
  */
-void		PhoneBook::display_single_info(std::string info_type, std::string info)
+void		PhoneBook::displaySingleInfo(std::string info_type, std::string info)
 {
 	std::cout.setf (std::ios::left);
 	std::cout << std::setfill(' ') << std::setw(14) << info_type << ": " << info << std::endl;
@@ -118,7 +130,7 @@ void		PhoneBook::display_single_info(std::string info_type, std::string info)
  * @param separations The number of separator segments to display. Each segment is 
  *                    10 characters wide, filled with dashes, and bounded by '|'.
  */
-void	PhoneBook::display_separator_line(unsigned int separations)
+void	PhoneBook::displaySeparatorLine(unsigned int separations)
 {
 	unsigned int	i;
 
@@ -132,33 +144,6 @@ void	PhoneBook::display_separator_line(unsigned int separations)
 	std::cout << std::endl;
 }
 
-template	<typename T>
-/**
- * @brief Displays a formatted row of contact information in the phone book.
- * 
- * This function outputs a single row of contact details, including the index,
- * first name, last name, and nickname, formatted as a table row with fixed-width
- * columns separated by pipes. It is used to present multiple contacts in a
- * tabular format for easy viewing.
- * 
- * @param index The index number of the contact in the phone book.
- * @param firstName The first name of the contact.
- * @param lastName The last name of the contact.
- * @param nickname The nickname of the contact.
- * 
- * @note The output is sent to std::cout and includes a newline at the end.
- *       Each field is left-aligned and padded to 10 characters.
- */
-void		PhoneBook::display_multi_info(T index, std::string firstName, std::string lastName, std::string nickname)
-{
-	std::cout.setf (std::ios::right);
-	std::cout << "|" << std::setfill(' ') << std::setw(10) << index;
-	std::cout << "|" << std::setw(10) << firstName;
-	std::cout << "|" << std::setw(10) << lastName;
-	std::cout << "|" << std::setw(10) << nickname;
-	std::cout << "|" << std::endl;
-}
-
 /**
  * @brief Displays the list of contacts in the phone book.
  *
@@ -170,30 +155,30 @@ void		PhoneBook::display_multi_info(T index, std::string firstName, std::string 
  * @note The names are truncated if they exceed a certain length for display purposes.
  * @note This function does not modify any data; it only prints to the console.
  */
-void	PhoneBook::display_contact_list(void)
+void	PhoneBook::displayContactList(void)
 {
 	unsigned int	i;
 
 	std::cout << std::endl;
-	if (contacts_count == 0)
+	if (contactsCount == 0)
 	{
 		std::cout << "ERROR: no contacts saved" << std::endl;
 		return;
 	}
-	display_separator_line(4);
-	display_multi_info<std::string>("INDEX", "FIRST NAME", "LAST NAME", "NICKNAME");
-	display_separator_line(4);
+	displaySeparatorLine(4);
+	displayMultiInfo<std::string>("INDEX", "FIRST NAME", "LAST NAME", "NICKNAME");
+	displaySeparatorLine(4);
 	i = 0;
-	while (i < contacts_count)
+	while (i < contactsCount)
 	{
-		display_multi_info<int>
+		displayMultiInfo<int>
 		(
 			i,
-			truncate_string(contacts[i].get_firstName()),
-			truncate_string(contacts[i].get_lastName()),
-			truncate_string(contacts[i].get_nickname())
+			truncateString(contacts[i].getFirstName()),
+			truncateString(contacts[i].getLastName()),
+			truncateString(contacts[i].getNickname())
 		);
-		display_separator_line(4);
+		displaySeparatorLine(4);
 		i++;
 	}
 	std::cout << std::endl;
@@ -210,18 +195,18 @@ void	PhoneBook::display_contact_list(void)
  * @param contact_index The zero-based index of the contact to display.
  *                      Must be less than the total number of contacts stored.
  */
-void	PhoneBook::display_contact(unsigned int contact_index)
+void	PhoneBook::displayContact(unsigned int contact_index)
 {
 	std::cout << std::endl;
-	if (contact_index >= contacts_count)
+	if (contact_index >= contactsCount)
 	{
 		std::cout << "invalid index" << std::endl;
 		return;
 	}
-	display_single_info("first name", contacts[contact_index].get_firstName());
-	display_single_info("last name", contacts[contact_index].get_lastName());
-	display_single_info("nickname", contacts[contact_index].get_nickname());
-	display_single_info("phone number", contacts[contact_index].get_phoneNumber());
-	display_single_info("darkest secret", contacts[contact_index].get_secret());
+	displaySingleInfo("first name", contacts[contact_index].getFirstName());
+	displaySingleInfo("last name", contacts[contact_index].getLastName());
+	displaySingleInfo("nickname", contacts[contact_index].getNickname());
+	displaySingleInfo("phone number", contacts[contact_index].getPhoneNumber());
+	displaySingleInfo("darkest secret", contacts[contact_index].getSecret());
 	std::cout << std::endl;
 }

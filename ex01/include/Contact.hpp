@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:31:49 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 00:47:01 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 01:14:24 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CONTACT_HPP
 
 # include <iostream>
+# include <string>
 
 class Contact
 {
@@ -22,20 +23,20 @@ class Contact
 		Contact(void);
 		~Contact(void);
 
-		void		set_firstName(std::string s);
-		std::string	get_firstName(void);
+		void		setFirstName(std::string s);
+		std::string	getFirstName(void);
 
-		void		set_lastName(std::string s);
-		std::string	get_lastName(void);
+		void		setLastName(std::string s);
+		std::string	getLastName(void);
 
-		void		set_nickname(std::string s);
-		std::string	get_nickname(void);
+		void		setNickname(std::string s);
+		std::string	getNickname(void);
 
-		void		set_secret(std::string s);
-		std::string	get_secret(void);
+		void		setSecret(std::string s);
+		std::string	getSecret(void);
 
-		void		set_phoneNumber(std::string s);
-		std::string	get_phoneNumber(void);
+		void		setPhoneNumber(std::string s);
+		std::string	getPhoneNumber(void);
 
 
 	private:

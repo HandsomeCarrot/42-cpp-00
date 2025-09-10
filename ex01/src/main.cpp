@@ -6,14 +6,14 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 17:57:45 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 00:53:27 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 01:18:13 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <limits>
 
-static std::string	get_str_input(std::string prompt)
+static std::string	getStrInput(std::string prompt)
 {
 	std::string	input;
 
@@ -28,7 +28,7 @@ static std::string	get_str_input(std::string prompt)
 	return (input);
 }
 
-static unsigned int	get_int_input(std::string prompt)
+static unsigned int	getIntInput(std::string prompt)
 {
 	unsigned int	input;
 
@@ -48,32 +48,34 @@ static unsigned int	get_int_input(std::string prompt)
 static void	add(PhoneBook *pb)
 {
 	std::cout << "Adding new contact to the phone book." << std::endl;
-	pb->add_contact
+	pb->addContact
 	(
-		get_str_input("First name"),
-		get_str_input("Last name"),
-		get_str_input("Nickname"),
-		get_str_input("Darkest secret"),
-		get_str_input("Phone number")
+		getStrInput("First name"),
+		getStrInput("Last name"),
+		getStrInput("Nickname"),
+		getStrInput("Darkest secret"),
+		getStrInput("Phone number")
 	);
 }
 
 static void	search(PhoneBook *pb)
 {
+	unsigned int	contactsCount;
 	unsigned int	index;
 
-	pb->display_contact_list();
-	if (pb->contacts_count == 0)
+	pb->displayContactList();
+	contactsCount = pb->getContactsCount();
+	if (contactsCount == 0)
 		return;
 	while (true)
 	{
-		index = get_int_input("Enter index to display contact");
-		if (index < pb->contacts_count)
+		index = getIntInput("Enter index to display contact");
+		if (index < contactsCount)
 			break;
-		std::cout << "Invalid index. Choose a index between 0 and " << pb->contacts_count - 1;
+		std::cout << "Invalid index. Choose a index between 0 and " << contactsCount - 1;
 		std::cout << std::endl;
 	}
-	pb->display_contact(index);
+	pb->displayContact(index);
 }
 
 int	main(void)
