@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:46:20 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/10 23:36:50 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/10 23:48:57 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ Contact::~Contact(void)
 	std::cout << std::endl;
 }
 
+
+/**
+ * @brief Sets the first name of the contact.
+ * 
+ * @param s The string representing the first name to set.
+ */
 void	Contact::set_firstName(std::string s)
 {
 	firstName = s;
@@ -63,6 +69,11 @@ std::string	Contact::get_firstName(void)
 	return (firstName);
 }
 
+/**
+ * @brief Sets the last name of the contact.
+ * 
+ * @param s The string representing the last name to set.
+ */
 void	Contact::set_lastName(std::string s)
 {
 	lastName = s;
@@ -76,6 +87,11 @@ std::string	Contact::get_lastName(void)
 	return (lastName);
 }
 
+/**
+ * @brief Sets the nickname of the contact.
+ * 
+ * @param s The string representing the nickname to set.
+ */
 void	Contact::set_nickname(std::string s)
 {
 	nickname = s;
@@ -89,6 +105,11 @@ std::string	Contact::get_nickname(void)
 	return (nickname);
 }
 
+/**
+ * @brief Sets the secret of the contact.
+ * 
+ * @param s The string representing the secret to set.
+ */
 void	Contact::set_secret(std::string s)
 {
 	secret = s;
@@ -102,6 +123,11 @@ std::string	Contact::get_secret(void)
 	return (secret);
 }
 
+/**
+ * @brief Sets the phone number of the contact.
+ * 
+ * @param i The integer representing the phone number to set.
+ */
 void	Contact::set_phoneNumber(unsigned int i)
 {
 	phoneNumber = i;

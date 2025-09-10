@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:31:49 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/10 23:34:55 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/10 23:55:16 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 class Contact
 {
 	public:
+
 		Contact(void);
 		~Contact(void);
 
@@ -38,6 +39,7 @@ class Contact
 
 
 	private:
+
 		std::string		firstName;
 		std::string		lastName;
 		std::string		nickname;

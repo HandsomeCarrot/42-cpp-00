@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:26:28 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/10 23:29:43 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/10 23:55:35 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 class PhoneBook
 {
 	public:
+
 		PhoneBook(void);
 		~PhoneBook(void);
 
@@ -31,9 +32,12 @@ class PhoneBook
 			std::string		new_secret,
 			unsigned int	new_phoneNumber
 		);
+
 		void	display_contact_list(void);
 		void	display_contact(unsigned int contact_index);
+
 	private:
+
 		Contact	contacts[8];
 		unsigned int	contacts_count;
 		unsigned int	new_contact_index;
