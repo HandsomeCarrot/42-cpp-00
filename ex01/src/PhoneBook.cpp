@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:27:22 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 01:38:30 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 01:56:57 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ unsigned int	PhoneBook::getContactsCount(void) const
  * @brief Adds a new contact to the phone book.
  *
  * This method creates a new contact entry using the provided details and stores it
- * in the contacts array at the current newContactIndex. If the index reaches 7,
+ * in the contacts array at the current newContactIndex. If the index reaches MAX_CONTACTS - 1,
  * it wraps around to 0, effectively overwriting the oldest contact when the phone
- * book is full (maximum 8 contacts). The contactsCount is incremented up to 8.
+ * book is full. The contactsCount is incremented up to MAX_CONTACTS.
  *
  * @param new_firstName The first name of the new contact.
  * @param new_lastName The last name of the new contact.
@@ -78,11 +78,11 @@ void	PhoneBook::addContact
 	contacts[newContactIndex].setSecret(new_secret);
 	contacts[newContactIndex].setPhoneNumber(new_phoneNumber);
 	
-	if (newContactIndex == 7)
+	if (newContactIndex == MAX_CONTACTS - 1)
 		newContactIndex = 0;
 	else
 		newContactIndex++;
-	if (contactsCount < 8)
+	if (contactsCount < MAX_CONTACTS)
 		contactsCount++;
 }
 
@@ -98,9 +98,9 @@ void	PhoneBook::addContact
  */
 std::string	PhoneBook::truncateString(const std::string &s)
 {
-	if (s.length() <= 10)
+	if (s.length() <= SHORT_STR_WIDTH)
 		return (s);
-	return (s.substr(0, 9) + '.');
+	return (s.substr(0, SHORT_STR_WIDTH - 1) + '.');
 }
 
 /**

@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:26:28 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 01:38:26 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 01:56:37 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include "Contact.hpp"
 # include <iostream>
 # include <iomanip>
+
+# define MAX_CONTACTS 8
+# define SHORT_STR_WIDTH 10
 
 class PhoneBook
 {
@@ -28,7 +31,7 @@ class PhoneBook
 
 		void	addContact
 		(
-			const std::string	&new_firstName,
+			const std::string	&newFirstName,
 			const std::string	&newLastName,
 			const std::string	&newNickname,
 			const std::string	&newSecret,
@@ -40,13 +43,13 @@ class PhoneBook
 		
 		private:
 		
-		Contact	contacts[8];
-		unsigned int	contactsCount;
-		unsigned int	newContactIndex;
+		std::array<Contact, MAX_CONTACTS>	contacts;
+		unsigned int						contactsCount;
+		unsigned int						newContactIndex;
 
-		std::string		truncateString(const std::string &s);
-		void			displaySingleInfo(std::string info_type, std::string info);
-		void			displaySeparatorLine(unsigned int separations);
+		std::string	truncateString(const std::string &s);
+		void		displaySingleInfo(std::string info_type, std::string info);
+		void		displaySeparatorLine(unsigned int separations);
 
 		/**
 		 * @brief Displays a formatted row of contact information in the phone book.
