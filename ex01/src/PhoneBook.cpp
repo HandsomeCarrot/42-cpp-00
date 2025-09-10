@@ -6,16 +6,16 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:27:22 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/10 20:33:03 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/10 23:42:04 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void)
+PhoneBook::PhoneBook(void) :
+	contacts_count(0),
+	new_contact_index(0)
 {
-	contacts_count = 0;
-	new_contact_index = 0;
 	std::cout << "empty phone book created" << std::endl;
 }
 
@@ -24,9 +24,21 @@ PhoneBook::~PhoneBook(void)
 	std::cout << "phone book cleared" << std::endl;
 }
 
-void	PhoneBook::add_contact(Contact c)
+void	PhoneBook::add_contact
+(
+	std::string		new_firstName,
+	std::string		new_lastName,
+	std::string		new_nickname,
+	std::string		new_secret,
+	unsigned int	new_phoneNumber
+)
 {
-	contacts[new_contact_index] = c;
+	contacts[new_contact_index].set_firstName(new_firstName);
+	contacts[new_contact_index].set_lastName(new_lastName);
+	contacts[new_contact_index].set_nickname(new_nickname);
+	contacts[new_contact_index].set_secret(new_secret);
+	contacts[new_contact_index].set_phoneNumber(new_phoneNumber);
+	
 	if (new_contact_index == 7)
 		new_contact_index = 0;
 	else

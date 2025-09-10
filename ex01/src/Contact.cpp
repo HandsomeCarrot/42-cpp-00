@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:46:20 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/10 20:32:53 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/10 23:36:50 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,37 +31,6 @@ Contact::Contact(void) :
 }
 
 /**
- * @brief Constructs a new Contact object with the provided details.
- *
- * Initializes the contact's first name, last name, nickname, phone number, and secret.
- * Outputs a message to the standard output indicating the creation of the new contact.
- *
- * @param new_firstName The first name of the contact.
- * @param new_lastName The last name of the contact.
- * @param new_nickname The nickname of the contact.
- * @param new_secret The secret associated with the contact.
- * @param new_phoneNumber The phone number of the contact.
- */
-Contact::Contact
-(
-	std::string	&new_firstName,
-	std::string	&new_lastName,
-	std::string	&new_nickname,
-	std::string	&new_secret,
-	int			new_phoneNumber
-) :
-	firstName(new_firstName),
-	lastName(new_lastName),
-	nickname(new_nickname),
-	secret(new_secret),
-	phoneNumber(new_phoneNumber)
-{
-	std::cout << "created new contact: ";
-	std::cout << firstName << " " << lastName;
-	std::cout << "(" << nickname << ")" << std::endl;
-}
-
-/**
  * @brief Destructor for the Contact class.
  *
  * Outputs a message to the standard output stream indicating that a Contact object
@@ -81,38 +50,48 @@ Contact::~Contact(void)
 	std::cout << std::endl;
 }
 
-Contact&	Contact::operator=(const Contact& other)
+void	Contact::set_firstName(std::string s)
 {
-	firstName = other.firstName;
-	lastName = other.lastName;
-	nickname = other.nickname;
-	secret = other.secret;
-	phoneNumber = other.phoneNumber;
-	return (*this);
+	firstName = s;
 }
 
 /**
  * @brief returns the first name of the contact.
  */
-std::string Contact::get_firstName(void)
+std::string	Contact::get_firstName(void)
 {
 	return (firstName);
+}
+
+void	Contact::set_lastName(std::string s)
+{
+	lastName = s;
 }
 
 /**
  * @brief returns the last name of the contact.
  */
-std::string Contact::get_lastName(void)
+std::string	Contact::get_lastName(void)
 {
 	return (lastName);
+}
+
+void	Contact::set_nickname(std::string s)
+{
+	nickname = s;
 }
 
 /**
  * @brief returns the nickname of the contact.
  */
-std::string Contact::get_nickname(void)
+std::string	Contact::get_nickname(void)
 {
 	return (nickname);
+}
+
+void	Contact::set_secret(std::string s)
+{
+	secret = s;
 }
 
 /**
@@ -123,10 +102,15 @@ std::string	Contact::get_secret(void)
 	return (secret);
 }
 
+void	Contact::set_phoneNumber(unsigned int i)
+{
+	phoneNumber = i;
+}
+
 /**
  * @brief returns the phone number of the contact.
  */
-int Contact::get_phoneNumber(void)
+unsigned int	Contact::get_phoneNumber(void)
 {
 	return (phoneNumber);
 }
