@@ -6,7 +6,7 @@
 #    By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 15:12:48 by vpoka             #+#    #+#              #
-#    Updated: 2025/09/08 16:52:53 by vpoka            ###   ########.fr        #
+#    Updated: 2025/09/10 18:33:32 by vpoka            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,4 +60,4 @@ re: fclean all
 $(OBJ_FOLDER)/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-.PHONY: clean fclean re run
+.PHONY: clean fclean re
