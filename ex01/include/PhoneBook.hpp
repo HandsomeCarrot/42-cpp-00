@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:26:28 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 01:56:37 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 01:58:43 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ class PhoneBook
 		
 		private:
 		
-		std::array<Contact, MAX_CONTACTS>	contacts;
-		unsigned int						contactsCount;
-		unsigned int						newContactIndex;
+		Contact			contacts[MAX_CONTACTS];
+		unsigned int	contactsCount;
+		unsigned int	newContactIndex;
 
 		std::string	truncateString(const std::string &s);
 		void		displaySingleInfo(std::string info_type, std::string info);
