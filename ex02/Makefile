@@ -6,7 +6,7 @@
 #    By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/11 02:06:10 by vpoka             #+#    #+#              #
-#    Updated: 2025/09/11 17:31:50 by vpoka            ###   ########.fr        #
+#    Updated: 2025/09/11 17:36:07 by vpoka            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ INC = -Iinclude
 
 SRC = src
 SRCS =	$(addprefix $(SRC)/, \
-		Account.cpp, \
+		Account.cpp \
 		tests.cpp)
 
 BUILD = build
