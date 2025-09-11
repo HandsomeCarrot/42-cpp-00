@@ -6,13 +6,18 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:55:34 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 17:13:56 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 17:42:03 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
 #include <ctime>
+
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
 
 static void	displayInfo(std::string desc, int info, int sep)
 {
@@ -23,7 +28,9 @@ static void	displayInfo(std::string desc, int info, int sep)
 
 Account::Account(int initial_deposit) :
 	_accountIndex(_nbAccounts),
-	_amount(initial_deposit)
+	_amount(initial_deposit),
+	_nbDeposits(0),
+	_nbWithdrawals(0)
 {
 	_nbAccounts++;
 	_totalAmount += _amount;
@@ -51,6 +58,7 @@ void	Account::_displayTimestamp(void)
 	struct std::tm	*datetime;
 	char			output[17];
 
+	timestamp = NULL;
 	std::time(timestamp);
 	datetime = std::localtime(timestamp);
 	std::strftime(output, 17, "[%Y%m%d_%H%M%S] ", datetime);
