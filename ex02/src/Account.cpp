@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:55:34 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 17:42:03 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 17:46:48 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,13 @@ Account::~Account(void)
 
 void	Account::_displayTimestamp(void)
 {
-	std::time_t		*timestamp;
-	struct std::tm	*datetime;
-	char			output[17];
+	std::time_t		timestamp;
+	struct std::tm	datetime;
+	char			output[20];
 
-	timestamp = NULL;
-	std::time(timestamp);
-	datetime = std::localtime(timestamp);
-	std::strftime(output, 17, "[%Y%m%d_%H%M%S] ", datetime);
+	std::time(&timestamp);
+	datetime = *std::localtime(&timestamp);
+	std::strftime(output, 20, "[%Y%m%d_%H%M%S] ", &datetime);
 	std::cout << output;
 }
 
