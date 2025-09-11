@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:55:34 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 17:46:48 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 17:54:26 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 	_amount -= withdrawal;
 	displayInfo("amount", _amount, 1);
 	_nbWithdrawals++;
-	displayInfo("", _nbWithdrawals, 0);
+	displayInfo("nb_withdrawals", _nbWithdrawals, 0);
 	std::cout << std::endl;
 	_totalAmount -= withdrawal;
 	_totalNbWithdrawals++;
