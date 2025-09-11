@@ -6,7 +6,7 @@
 #    By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 20:40:46 by vpoka             #+#    #+#              #
-#    Updated: 2025/09/10 20:31:58 by vpoka            ###   ########.fr        #
+#    Updated: 2025/09/11 17:32:11 by vpoka            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ $(NAME): $(BUILD) $(OBJS)
 
 clean:
 	@ rm -rf $(BUILD)
-	@ echo "$(RED)$(NAME): deleted OBJECT files$(RST)"
+	@ echo "$(RED)$(NAME): deleted BUILD files$(RST)"
 
 fclean: clean
 	@ rm -f $(NAME)
@@ -62,6 +62,6 @@ $(BUILD)/%.o: $(SRC)/%.cpp
 
 run: all
 	@ echo "$(CYAN)Starting $(NAME)...$(RST)"
-	@ ./phonebook
+	@ ./$(NAME)
 
 .PHONY: clean fclean re run
