@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:27:22 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 01:56:57 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/11 02:00:13 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,12 +159,12 @@ void	PhoneBook::displayContactList(void)
 {
 	unsigned int	i;
 
-	std::cout << std::endl;
 	if (contactsCount == 0)
 	{
 		std::cout << "ERROR: no contacts saved" << std::endl;
 		return;
 	}
+	std::cout << std::endl;
 	displaySeparatorLine(4);
 	displayMultiInfo<std::string>("INDEX", "FIRST NAME", "LAST NAME", "NICKNAME");
 	displaySeparatorLine(4);
