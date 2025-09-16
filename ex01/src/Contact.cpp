@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:46:20 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 01:38:15 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/16 12:29:52 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Contact::Contact(void) :
 	secret(""),
 	phoneNumber("")
 {
-	std::cout << "created an empty contact." << std::endl;
+	//std::cout << "created an empty contact." << std::endl; // debugging code
 }
 
 /**
@@ -39,15 +39,15 @@ Contact::Contact(void) :
  */
 Contact::~Contact(void)
 {
-	std::cout << "deleted contact: ";
-	if (firstName.size() > 0 && lastName.size() > 0 && nickname.size() > 0)
-	{
-		std::cout << firstName << " " << lastName;
-		std::cout << "(" << nickname << ")";
-	}
-	else
-		std::cout << "unknown";
-	std::cout << std::endl;
+	//std::cout << "deleted contact: ";
+	//if (firstName.size() > 0 && lastName.size() > 0 && nickname.size() > 0)
+	//{
+	//	std::cout << firstName << " " << lastName;
+	//	std::cout << "(" << nickname << ")";
+	//}
+	//else
+	//	std::cout << "unknown";
+	//std::cout << std::endl; // debugging code
 }
 
 

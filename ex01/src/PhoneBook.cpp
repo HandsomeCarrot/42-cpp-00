@@ -6,7 +6,7 @@
 /*   By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:27:22 by vpoka             #+#    #+#             */
-/*   Updated: 2025/09/11 02:00:13 by vpoka            ###   ########.fr       */
+/*   Updated: 2025/09/16 12:29:19 by vpoka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ PhoneBook::PhoneBook(void) :
 	contactsCount(0),
 	newContactIndex(0)
 {
-	std::cout << "empty phone book created" << std::endl;
+	//std::cout << "empty phone book created" << std::endl; // debugging code
 }
 
 /**
@@ -34,7 +34,7 @@ PhoneBook::PhoneBook(void) :
  */
 PhoneBook::~PhoneBook(void)
 {
-	std::cout << "phone book cleared" << std::endl;
+	//std::cout << "phone book cleared" << std::endl; // debugging code
 }
 
 /**
