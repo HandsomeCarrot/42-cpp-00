@@ -6,7 +6,7 @@
 #    By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/11 02:06:10 by vpoka             #+#    #+#              #
-#    Updated: 2025/09/11 17:36:07 by vpoka            ###   ########.fr        #
+#    Updated: 2025/09/30 13:10:47 by vpoka            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS =	$(addprefix $(SRC)/, \
 
 BUILD = build
 OBJS = $(SRCS:$(SRC)/%.cpp=$(BUILD)/%.o)
+DEPS = $(OBJS:.o=.d)
 
 #-----COLORS-----#
 
@@ -35,6 +36,8 @@ BLUE = \033[1;34m
 CYAN = \033[1;36m
 
 #-----RULES-----#
+
+-include $(DEPS)
 
 all: $(NAME)
 
