@@ -6,7 +6,7 @@
 #    By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/11 02:06:10 by vpoka             #+#    #+#              #
-#    Updated: 2025/09/30 13:10:47 by vpoka            ###   ########.fr        #
+#    Updated: 2025/10/02 11:13:38 by vpoka            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ CYAN = \033[1;36m
 all: $(NAME)
 
 $(BUILD):
-	@ echo "$(YELLOW)$(NAME): Compiling...$(RST)"
+	@ echo -e "$(YELLOW)$(NAME): Compiling...$(RST)"
 	@ mkdir -p $(BUILD)
 
 $(BUILD)/%.o: $(SRC)/%.cpp
@@ -50,19 +50,19 @@ $(BUILD)/%.o: $(SRC)/%.cpp
 
 $(NAME): $(BUILD) $(OBJS)
 	@ $(CXX) $(CXXFLAGS) $(INC) $(OBJS) -o $(NAME)
-	@ echo "$(GREEN)$(NAME) built successfully!$(RST)"
+	@ echo -e "$(GREEN)$(NAME) built successfully!$(RST)"
 
 run: all
-	@ echo "$(CYAN)Starting $(NAME)...$(RST)"
+	@ echo -e "$(CYAN)Starting $(NAME)...$(RST)"
 	@ ./$(NAME)
 
 clean:
 	@ rm -rf $(BUILD)
-	@ echo "$(RED)deleted BUILD files$(RST)"
+	@ echo -e "$(RED)deleted BUILD files$(RST)"
 
 fclean: clean
 	@ rm -rf $(NAME)
-	@ echo "$(RED)deleted PROGRAM file$(RST)"
+	@ echo -e "$(RED)deleted PROGRAM file$(RST)"
 
 re: fclean all
 
