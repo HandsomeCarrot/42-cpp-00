@@ -6,7 +6,7 @@
 #    By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 20:40:46 by vpoka             #+#    #+#              #
-#    Updated: 2025/10/02 11:13:38 by vpoka            ###   ########.fr        #
+#    Updated: 2025/10/02 15:27:08 by vpoka            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,20 +43,20 @@ CYAN = \033[1;36m
 all: $(NAME)
 
 $(BUILD):
-	@ echo -e "$(YELLOW)$(NAME): Compiling...$(RST)"
+	@ echo "$(YELLOW)$(NAME): Compiling...$(RST)"
 	@ mkdir -p $(BUILD)
 
 $(NAME): $(BUILD) $(OBJS)
 	@ $(CXX) $(CXXFLAGS) $(INCLUDE) $(OBJS) -o $(NAME)
-	@ echo -e "$(GREEN)$(NAME) built successfully!$(RST)"
+	@ echo "$(GREEN)$(NAME) built successfully!$(RST)"
 
 clean:
 	@ rm -rf $(BUILD)
-	@ echo -e "$(RED)$(NAME): deleted BUILD files$(RST)"
+	@ echo "$(RED)$(NAME): deleted BUILD files$(RST)"
 
 fclean: clean
 	@ rm -f $(NAME)
-	@ echo -e "$(RED)$(NAME): deleted PROGRAM file$(RST)"
+	@ echo "$(RED)$(NAME): deleted PROGRAM file$(RST)"
 
 re: fclean all
 
@@ -64,7 +64,7 @@ $(BUILD)/%.o: $(SRC)/%.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 
 run: all
-	@ echo -e "$(CYAN)Starting $(NAME)...$(RST)"
+	@ echo "$(CYAN)Starting $(NAME)...$(RST)"
 	@ ./$(NAME)
 
 .PHONY: clean fclean re run
