@@ -6,7 +6,7 @@
 #    By: vpoka <vpoka@student.42vienna.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 15:12:48 by vpoka             #+#    #+#              #
-#    Updated: 2025/10/02 15:27:08 by vpoka            ###   ########.fr        #
+#    Updated: 2025/10/02 20:33:10 by vpoka            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,20 +44,20 @@ CYAN = \033[1;36m
 all: $(NAME)
 
 $(BUILD):
-	@ echo "$(YELLOW)$(NAME): Compiling...$(RST)"
+	@ printf "$(YELLOW)$(NAME): Compiling...$(RST)\n"
 	@ mkdir -p $(BUILD)
 
 $(NAME): $(BUILD) $(OBJS)
 	@ $(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-	@ echo "$(GREEN)$(NAME) built successfully!$(RST)"
+	@ printf "$(GREEN)$(NAME) built successfully!$(RST)\n"
 
 clean:
 	@ rm -rf $(BUILD)
-	@ echo "$(RED)$(NAME): deleted OBJECT files$(RST)"
+	@ printf "$(RED)$(NAME): deleted OBJECT files$(RST)\n"
 
 fclean: clean
 	@ rm -f $(NAME)
-	@ echo "$(RED)$(NAME): deleted PROGRAM file$(RST)"
+	@ printf "$(RED)$(NAME): deleted PROGRAM file$(RST)\n"
 
 re: fclean all
 
