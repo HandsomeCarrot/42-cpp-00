@@ -14,9 +14,7 @@ A C++98 project from the 42 curriculum introducing object-oriented programming w
 - [Repository structure](#repository-structure)
 - [Focus areas by exercise](#focus-areas-by-exercise)
 - [Testing](#testing)
-- [Troubleshooting](#troubleshooting)
 - [Status](#status)
-- [License](#license)
 
 ## Description
 
@@ -212,13 +210,6 @@ Two differences are expected and not errors: the timestamps always differ (the s
 ### ex00 and ex01
 
 There are no automated test scripts in the repository; these two programs are exercised by hand (ex00 with the examples above, ex01 interactively).
-
-## Troubleshooting
-
-- **`diff` against the reference log fails on the last eight lines:** the destructor order of the accounts depends on the compiler and OS — the `closed` lines may come out reversed. Compare them as a set; everything else should match after stripping timestamps.
-- **ex01 keeps printing "Invalid input. Try again!":** an empty field is rejected by design. Enter a non-empty value. Input that ends mid-prompt (for example a truncated pipe or Ctrl-D) loops the same way, so run the phone book interactively.
-- **ex01 SEARCH keeps asking for an index:** an out-of-range or non-numeric index is re-prompted instead of returning to the command prompt. Enter a number between 0 and the number of saved contacts minus 1.
-- **megaphone output has no spaces between arguments:** arguments are concatenated exactly as given; put the spaces inside the arguments, as in the second example.
 
 ## Status
 
